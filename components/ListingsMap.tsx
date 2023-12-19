@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { defaultStyles } from '@/constants/Styles';
 import { useRouter } from 'expo-router';
@@ -17,7 +17,7 @@ const INITIAL_REGION = {
   longitudeDelta: 9,
 };
 
-const ListingsMap = ({ listings }: Props) => {
+const ListingsMap = memo(({ listings }: Props) => {
   const router = useRouter();
   const mapRef = useRef<any>(null);
 
@@ -105,7 +105,7 @@ const ListingsMap = ({ listings }: Props) => {
       </MapView>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {
